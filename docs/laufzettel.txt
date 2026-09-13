@@ -1,0 +1,13 @@
+(IRSs) have come up as a possibility to provide an additional propagation path in wireless communication systems. This is especially useful for wireless communication systems, using high carrier frequencies that suffer from severe attenuation from larg objects, such as buildings. (IRS) comprise a large number of unit elements that can apply a phase shift to the reflected electromagnetic waves. By superposition of the reflections from all unit cells, a great variety of reflection behaviors can be configured. Early works on (IRS) focused on optimizing the phase shifts for a given perfect (CSI). Later, however, the problem of channel acquisition was cpmmonly aknowledged and its necessary overhead made such approaches challenging.
+
+To avoid the resource-intensive complete channel estimation, the (IRS) can be configured by selecting predefined codewords from a codebook, which can be done based on the direction of the user or strong scatterers in the channel.  In this project, a codebook that is suitable for the near-field should be derived. For the practical implementation of the (IRS) hardware, these codebooks are limited by the (IRS) technology, e.g. copper patches adjusted by PIN diodes. Firthermore, inaccuracies of the hardware should be considered. 
+
+The main guidelines for the project are as follows:
+Literature review on IRS models and available codebook designs.
+Comparison of the existing codebooks under hardware impairments and near-field assumptions.
+Design of a codebook with favorable properties that is suitable for the near-field.
+
+Prerequisites:
+Scientific skills: Basic knowledge of digital communication systems and mathematical optimization
+Programming skills: Experience in Python programming
+Supervisor: Moritz Garkisch (and Ata Khalili)

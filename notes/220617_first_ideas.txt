@@ -1,0 +1,63 @@
+Date: 17.06.2022
+Topic: Initial Ideas for Research Internship: IRS Codebook
+
+General Idea: Design a codebook that can be used in the near-field for an IRS. It should be limited to discrete phase-shifts and should work under hardware impairments, such as random or correlated phase noise, or other impairments that depend on the hardware implementation of the IRS.
+
+Description:
+- In the literature, many codebooks are used already. It is quite common to use a DFT codebook, e.g. for a search at the user where the orientation is unknown and we have to deal with analog beamforming. 
+An extension of this idea is the linear codebook, where adjacent elements have a constant phase-difference over the entire aperture, i.e. the phase-shift depends linearly on the position of the element within the array.
+Since this creates partly unfavourable conditions, such as 'valleys' between the codewords alternatives need to be designed for if the number of codebook elements gets too small w.r.t. the number of elements in the aperture. Therefore the so-called quadratic codebook was introduced in [3]. 
+There, the phase-shifts are described by a quadratic term, depending on the position of the element within the array. This codebook allows to choose the width of the codewords, and therefore allows to make the codebook arbitrarily small. In the end, this enables a tradeoff between codebook size and reflection gain.
+- Why do we need codebook at all?
+	- Alternative: Estimate the complete channel (as oppose to the end-to-end channel) with the channel coefficients from each antenna to each IRS elements. IRS are large. Hence, this is barely possible in real time.
+	- The channel is sparse, so we could apply compressive sensing methods to lower the overhead of channel estimation. How to do this effectively is however unclear and strongly depends on the actual sparsity of the real channel, which will not behave as in our model.
+	- Common solution (as often done at IDC): Use a fixed codebook that has been defined in an offline stage and select the best suited one for the online algorithms. This depends on the LoS, which is usually dominant in mmWave frequencies or above.
+- Why near-field?
+	- Far field codebook has already been defined by [Walid]. But the aperture size of the IRS may be large and many paper showed that the IRS should be close to either the user or the BS. The we are not in the far-field anymore.
+- Hardware impairments are important. The codebook should be reliably used, even if the hardware implementation is imperfect. The key properties should still be kept.
+	- Quantization of the phase shifts
+	- Phase-noise
+	- these errors might be correlated or correlated. As usual, we expect some form of normal distribution.
+- Computational complexity is not a significant problem, since the codebook is computed offline. However, the problems should be feasible to implement at all and should be computed on a normal work computer.
+
+Comments about Hardware Impairments by Andre:
+- phase is quantized, 1 2 3 bits, make as parameter
+- phase might be inaccurate, probably gauss distributed but might have non-zero mean
+- Losses in the reflection are relevant
+- effective apperture size as constant
+- effective unit cell area based on incomming and outgoing direction
+
+Tasks:
+- Review Literature
+- Implement DFT, linear, and quadratic codebook
+- Implement codebook from [Walid] with continious and discrete variables
+- Map the problem from [Walid] to the near field
+- Compare all codebooks under hardware inaccuarcies
+- Optional: Design a codebook with robust optimization over hardware impairments
+- Optional: Design Codebook with 'rectangular' beam shape, i.e. all directions served by this codeword should be served equally good
+
+Required Knowledge:
+- Digital Communication / MIMO
+- Near or farfield
+- Smallband / wideband
+- Channel characterization, fading types, Razleigh, Rice
+- Programming (CVX or CVXPY)
+- Mathematical Optimization
+
+Basic Literature:
+- [1] Alexandropoulos, George C and Jamali, Vahid and Schober, Robert and Poor, H Vincent - Near-Field Hierarchical Beam Management for RIS-Enabled Millimeter Wave Multi-Antenna Systems
+- [2] Ghanem, Walid R and Jamali, Vahid and Schellmann, Malte and Cao, Hanwen and Eichinger, Joseph and Schober, Robert - Optimization-based Phase-shift Codebook Design for Large
+- [3] Vahid Jamali and Marzieh Najafi and Robert Schober and H. Vincent Poor - Power Efficiency, Overhead, and Complexity Tradeoff in IRS-Assisted Communications -- Quadratic Phase-Shift Design
+- [4] Rahal - Arbitrary Beam Pattern Approximation via RISs with Measured Element Responses
+
+
+
+Date: 8.07.2021
+- Discussion over why we require codebook over multipath scenario. Essentially to mitigate the affect of blocking in LOS path and transmitting through IRS for good power requirement for the desired user.
+- The need to move to quadratic phase shift codebook design from DFT based and Linear phase shift design is because of less number of required beams and also wider beams to suffice the communication.
+- Above certain number of IRS elements all methods achieve desired or close to ideal power efficiency.
+- Below certain number of IRS elements or codebook design the linear phase shift tends to perform worse than even DFT because of skipping certain number of phase shift elements for reflection
+  which esssentially degrades the performance because of narrow beams cant suffice the power efficiency.
+- Next week, model the SISO model and write the model in latex.
+- define every input and output scheme and how I plan to model in python. 
+- replicate the system model and DFT based system model in simulation.

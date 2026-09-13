@@ -1,0 +1,123 @@
+Date: 8.07.2021
+- Discussion over why we require codebook over multipath scenario. Essentially to mitigate the affect of blocking in LOS path and transmitting through IRS for good power requirement for the desired user.
+- The need to move to quadratic phase shift codebook design from DFT based and Linear phase shift design is because of less number of required beams and also wider beams to suffice the communication.
+- Above certain number of IRS elements all methods achieve desired or close to ideal power efficiency.
+- Below certain number of IRS elements or codebook design the linear phase shift tends to perform worse than even DFT because of skipping certain number of phase shift elements for reflection
+  which esssentially degrades the performance because of narrow beams cant suffice the power efficiency.
+- Next week, model the SISO model and write the model in latex.
+- define every input and output scheme and how I plan to model in python. 
+- replicate the system model and DFT based system model in simulation.
+
+Date 18.07.2022
+-Employ DFT phase shift codebook design in python.
+-Recreate the plot for IRS response function for SISO model using the eqaution 1.6 and 1.7 from the notes.
+-Employ the eqaution with the linear transform apart from calculating individual elemenents from the JAmali papaer.
+
+Date 22.07.2022
+Tasks
+-Implement linear and quadartic codebooks to the code and try using a function to take care of the type of codebook to implement.
+- Also read Alexandruopolous paper and implement codebook design for near field.
+Date 22.08.2022
+Tasks
+-Implement Near field model using near field gain formula but using the previous codebook designs.
+
+Date 02.09.2022
+-Plot a graph to infer when the near field and the far field starts.
+-The plot consists of gain vs distance, considering the evaluation angle basically the theta_r or the elevation angles are zero vectors.
+-The result holds true compared to similar plots in the literature.
+
+Date 07.09.2022
+-Plot the near field graph vs normalized distance d/wavelength for different Q.
+-include legends and labels for the graphs to make them look nice.
+-Try to come up with possible solutions to why near field gain losses some 10dB gain value compared to far feild case. 
+consideriing the distance of user is less than the Rayleigh distance.
+Date 16.09.2022
+-Work on designing new phase shifts for the near field model such that in theory the the complex terms in the gain fromula cacels out.
+-Try to work it out and create a formula that would serve the purpose.
+Date 23.09.2022
+-include references in the report and try to write down every math statement and notation correctly.
+-produce a 3D plot to know if the grid thing works or not.
+-produce the plot with the same near field gain equation.
+Date 3-10-2022
+-Completed the design of location specific codebook for unknown receiver directions for near field scenario.
+-
+
+-Codebooks for IRS.
+
+Hardware Impairements-
+  - 
+
+
+Idea
+- What happens if I increase number of grid points near the IRS and make sparse connections close to far field and check the performance 
+  and pahse shift design?
+
+#################
+Report structure
+#################
+
+- toc
+-glossary
+- Abstract
+
+- intridyction 
+   - problem formulation from the pdf aushang.
+   - Irs 
+   - from far field codebook to near filed codebook design. the goal is to motivate readers why we impleemnt near field codebook.
+
+- System model
+-----nd problem and literature on far field.
+   - SISO model
+   - problem formulation codebook design and explanation.
+- Near field and far field considerations using the Bjornson's paper.
+- Linear codebook extension
+
+-TO Do for chapter 5 
+- Introduce near filed IRS response gain and settings like p_n, p_i, p_r, p_target and p_artificial 
+- second  section we define our phase shift modelling for codebook using spherical grid but first inlcude theory behind using spherical wave and then we use the 
+  information about vector position of various variables such w-n, p_t, p_grid points etc and then formulate near field codebook design. 
+-  Next section we move to discuss result such as first result using near field gain formula for various distances and IRS elements, and then mention
+   the near field gain using near field field phase shifts. Also compare them and then make relevant points about the next chapter with simulation results.
+- In chapter 3 last section write about near field IRS response function.
+
+
+Doubt- should i include the beam patterns form linear and quadratic codebook design?
+18.11.2022
+Done
+- use different IRS elemenst such as 10-15, 15-20 even 30 to find out why does the plot looks like that.
+- do the beam shape plot for phase error as well while fixing the distance and radius and plotting beam.
+- calculate variance for unifrom distribution and include that in the gaussion noise as well.
+- do comparion with far field ass well for 20x20 to see if the shape of the plot still varies.
+- instead of 180 we need to do 160 phase shifts and calculate remaining ones as well wrt to the 160.
+
+25.11.2022
+Done
+- Check for linear codebook extension if the p_t vector does anything for all the spherical grid target points or it is just for one that it might give 
+me gain value and rest are not saved at all?
+- Also, if the above mentioned thing is true than rework the code and try to break it down to understandable parts and compile decent looking code structure.
+
+
+9.12.2022
+
+TO DO
+DOne
+- Enter results in the document and compare
+- First section about different bits at radius 10 and 1 evaluation direction and infer which discrete number of bits can close the distance of 
+  the continuous phase.
+- introduce beam shape for the near field case and the gains
+- effect of phase errors in beamformer gains
+- effect of gaussian noise in beam pattern gains
+- effect of discrete phase shifts and noise
+- then average the nooise and infer
+
+
+questions for Moritz:
+
+- We consider general incident angles meaning impinging waves can arrive from any angle, but we only investigate for
+  constant angles like 0 degrees of incidence. what to answer if they ask why I didn't consideer more general angles and
+  why replicate the sam as in nejafi papaer?
+
+
+- Ask mortitz, how to formulate in words that the BS to IRS is just 1 antenna link which has multipath, and from IRS
+  to rx which has several multipaths but all are directed, so essentially what knda system becomes of IRS to rx with all
+  the antenna elements directing towards single rx, also is it safe to say that they all have several links to the user?
