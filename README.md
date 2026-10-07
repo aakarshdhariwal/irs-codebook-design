@@ -199,6 +199,22 @@ Digitale Übertragung), chaired by Prof. Dr.-Ing. Robert Schober (18 July – 18
 October 2022; report submitted 11 January 2023).
 Supervised by Moritz Garkisch and Ata Khalili.
 
+## Citation
+
+If you reference this work, please cite it as:
+
+```bibtex
+@software{dhariwal2023irs,
+  author = {Dhariwal, Aakarsh},
+  title  = {IRS Codebook Design under Hardware Considerations},
+  year   = {2023},
+  url    = {https://github.com/aakarshdhariwal/irs-codebook-design}
+}
+```
+
+Machine-readable citation metadata is also available in
+[`CITATION.cff`](CITATION.cff).
+
 ## License
 
 The code in `src/` is released under the [MIT License](LICENSE). The report, the

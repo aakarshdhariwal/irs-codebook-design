@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "IRS Codebook Design under Hardware Considerations"
+type: software
+authors:
+  - family-names: "Dhariwal"
+    given-names: "Aakarsh"
+    affiliation: "Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)"
+abstract: >-
+  Near-field codebook design for Intelligent Reflecting Surfaces (IRS), extending
+  a far-field linear phase-shift codebook to the near field and evaluating it
+  under realistic hardware constraints: discrete, PIN-diode-limited phase
+  shifts, phase errors, and phase noise. Research internship report, Institute
+  for Digital Communications (Lehrstuhl für Digitale Übertragung), FAU
+  Erlangen-Nürnberg, supervised by Moritz Garkisch and Ata Khalili under
+  Prof. Dr.-Ing. Robert Schober.
+date-released: "2023-01-11"
+license: MIT
+repository-code: "https://github.com/aakarshdhariwal/irs-codebook-design"
+keywords:
+  - intelligent reflecting surfaces
+  - reconfigurable intelligent surfaces
+  - near-field beamforming
+  - codebook design
+  - phase-shift quantization
+  - 6G
+  - mmWave
+  - wireless communications
